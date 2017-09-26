@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Preview</title>
+  <link rel="stylesheet" href="/Users/doon/Desktop/Javascript/preview/preview.css">
+  <script src="/Users/doon/Desktop/Javascript/jquery-3.2.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300" rel="stylesheet">
+</head>
+<body>
+  <div id="header">
+    <p>Preview ver.2</p>
+  </div>
+  <div id="loader-bg">
+    <div class="file">
+  <h3>JPEG only</h3>
+  <input type="file" id="file" onchange="(this)">
+  </div>
+</div>
+    <div id="loader">
+      <img src="/Users/doon/Desktop/Javascript/preview/gif-load.gif">
+    </div>
+<!-- <output id="list"></output> -->
+  <div id="list"></div>
+<script>
+
+var inputFile = document.getElementById('file');
+var reader = new FileReader();
+
+$(function() {
+      $('#file').on("change", function() {
+        $("#list").fadeOut();
+        $("#loader-bg").fadeOut();
+          $("#loader").fadeIn();
+      });
+  });
+
+  function fileChange(ev) {
+  var target = ev.target;
+  var file = target.files[0];
+  var type = file.type;
+  var size = file.size;
+
+  if ( type !== 'image/jpeg' ) {
+    alert('選択できるファイルはJPEG画像だけです。');
+    inputFile.value = '';
+    return;
+  }
+
+//onladになった瞬間に、loding画面を消すようなアクションを追記
+  reader.onload = (function(theFile) {
+
+    return function(e) {
+      // Render thumbnail.
+      var span = document.getElementById('list');
+      span.innerHTML = ['<img class="thumb"  src="', e.target.result,
+                        '" title="', escape(theFile.name), '" style="width:auto;height:400px;"/>'].join('');
+    };
+  })(file);
+
+  reader.readAsDataURL(file);
+  var hoge = setInterval (function () {
+    $("#loader-bg").fadeIn();
+    $("#list").fadeIn();
+    $("#loader").fadeOut();
+  },3000);
+}
+
+function fileLoad() {
+  console.log(reader.result);
+}
+
+
+
+inputFile.addEventListener('change', fileChange, false);
+reader.addEventListener('load', fileLoad, false);
+
+</script>
+</body>
+</html>
