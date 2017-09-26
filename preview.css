@@ -1,0 +1,74 @@
+#header {
+	width: 100%;
+	height :150px;
+	font-size: 60px;
+	color: white;
+	text-align: center;
+line-height: 150px;
+}
+
+h3 {
+	font-family: Meiryo, "Hiragino Kaku Gothic Pro W3", Courier New, sans-serif;
+	color:white;
+	font-weight: normal;
+}
+
+body {
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)),
+  url("/Users/doon/Desktop/ネット画像/1c65eae0.jpg");
+  background-size: cover;
+	font-family: 'Alegreya Sans SC', sans-serif;
+
+	/* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+		text-align: center;
+}
+
+
+#list {
+	display: none;
+  position: center;
+  width: auto;
+  height: 250px;
+  z-index: 1;
+}
+#loader {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+.file {
+display: inline-block;
+overflow: hidden;
+position: relative;
+padding: 1em;
+border: 1px solid white;
+background:none;
+color:#fff;
+border-radius: 10%;
+}
+.file input[type="file"] {
+opacity: 0;
+filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+position: absolute;
+right: 0;
+top: 0;
+margin: 0;
+font-size: 100px;
+cursor: pointer;
+}
