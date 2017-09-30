@@ -14,10 +14,14 @@
   </div>
   <div id="loader-bg">
     <div class="file">
-  <h3>JPEG only</h3>
+  <h3>Click here!</h3>
   <input type="file" id="file" onchange="(this)">
   </div>
+  <div id="upload-box">
+    <h3>will be printed</h3>
+  </div>
 </div>
+
     <div id="loader">
       <img src="./gif-load.gif">
     </div>
@@ -32,6 +36,7 @@ $(function() {
       $('#file').on("change", function() {
         $("#list").fadeOut();
         $("#loader-bg").fadeOut();
+        $("upload-box").fadeOut();
           $("#loader").fadeIn();
       });
   });
@@ -55,7 +60,7 @@ $(function() {
       // Render thumbnail.
       var span = document.getElementById('list');
       span.innerHTML = ['<img class="thumb"  src="', e.target.result,
-                        '" title="', escape(theFile.name), '" style="width:auto;height:400px;"/>'].join('');
+                        '" title="', escape(theFile.name), '" style="width:auto;height:340px;"/>'].join('');
     };
   })(file);
 
