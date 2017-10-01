@@ -27,56 +27,44 @@
 
 <!-- <output id="list"></output> -->
 <script>
-
 var inputFile = document.getElementById('file');
 var reader = new FileReader();
-
 $(function() {
       $('#file').on("change", function() {
         $("#list").fadeOut();
           $("#loader").fadeIn();
       });
   });
-
   function fileChange(ev) {
   var target = ev.target;
   var file = target.files[0];
   var type = file.type;
   var size = file.size;
-
   if ( type !== 'image/jpeg' ) {
     alert('選択できるファイルはJPEG画像だけです。');
     inputFile.value = '';
     return;
   }
-
 //onladになった瞬間に、loding画面を消すようなアクションを追記
   reader.onload = (function(theFile) {
-
     return function(e) {
       // Render thumbnail.
       var span = document.getElementById('list');
       span.innerHTML = ['<img class="thumb"  src="', e.target.result,
-                        '" title="', escape(theFile.name), '" style="width:auto;height:340px;"/>'].join('');
+                        '" title="', escape(theFile.name), '" style="max-width:400px;max-height:340px;"/>'].join('');
     };
   })(file);
-
   reader.readAsDataURL(file);
   var hoge = setInterval (function () {
     $("#list").fadeIn();
     $("#loader").fadeOut();
   },3000);
 }
-
 function fileLoad() {
   console.log(reader.result);
 }
-
-
-
 inputFile.addEventListener('change', fileChange, false);
 reader.addEventListener('load', fileLoad, false);
-
 </script>
 </body>
 </html>
