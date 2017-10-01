@@ -14,19 +14,18 @@
   </div>
   <div id="loader-bg">
     <div class="file">
-  <h3>Click here!</h3>
-  <input type="file" id="file" onchange="(this)">
-  </div>
-  <div id="upload-box">
-    <h3>will be printed</h3>
-  </div>
-</div>
-
-    <div id="loader">
-      <img src="./gif-load.gif">
+      <h3>Click here!</h3>
+      <input type="file" id="file" onchange="(this)">
     </div>
+      <div id="upload-box">
+        <div id="loader">
+          <img src="./45.gif">
+        </div>
+        <div id="list"></div>
+      </div>
+    </div>
+
 <!-- <output id="list"></output> -->
-  <div id="list"></div>
 <script>
 
 var inputFile = document.getElementById('file');
@@ -35,8 +34,6 @@ var reader = new FileReader();
 $(function() {
       $('#file').on("change", function() {
         $("#list").fadeOut();
-        $("#loader-bg").fadeOut();
-        $("upload-box").fadeOut();
           $("#loader").fadeIn();
       });
   });
@@ -66,7 +63,6 @@ $(function() {
 
   reader.readAsDataURL(file);
   var hoge = setInterval (function () {
-    $("#loader-bg").fadeIn();
     $("#list").fadeIn();
     $("#loader").fadeOut();
   },3000);
